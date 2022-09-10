@@ -3,20 +3,18 @@ pipeline {
   stages {
     stage('Docker Build') {
       steps {
-        sh "docker build -t kmlaydin/podinfo:${env.BUILD_NUMBER} ."
+        sh "docker build -t arunmagi/magi2:${env.BUILD_NUMBER} ."
       }
     }
     stage('Docker Push') {
       steps {
-        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'dockerHubPassword', usernameVariable: 'dockerHubUser')]) {
-          sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPassword}"
-          sh "docker push kmlaydin/podinfo:${env.BUILD_NUMBER}"
+          sh "docker login -u arunamgi -p Arun@ak@99"
+          sh "docker push arunmagi/magi2:${env.BUILD_NUMBER}"
         }
-      }
     }
     stage('Docker Remove Image') {
       steps {
-        sh "docker rmi kmlaydin/podinfo:${env.BUILD_NUMBER}"
+        sh "docker rmi arunmagi/magi2:${env.BUILD_NUMBER}"
       }
     }
     stage('Apply Kubernetes Files') {
