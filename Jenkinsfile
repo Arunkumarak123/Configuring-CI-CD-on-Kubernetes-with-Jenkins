@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Docker Push') {
       steps {
-          sh "docker login -u arunamgi -p Arun@ak@99"
+          sh "docker login -u arunmagi -p Arun@ak@99"
           sh "docker push arunmagi/magi2:${env.BUILD_NUMBER}"
         }
     }
